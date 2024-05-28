@@ -1,27 +1,19 @@
 "use client"
+import { ProjectContext } from '@/context/ProjectContext'
 import { useRouter } from 'next/navigation'
-import {useState} from 'react'
+import {useContext, useState} from 'react'
 
 function ProjectForm() {
 
     const [name, setName] = useState('')
+    const {createProject} = useContext(ProjectContext)
     const router = useRouter()
     return (
         <form 
             onSubmit={async(e) => {
             e.preventDefault();
+            await createProject({name})
 
-            const res = await fetch('/api/projects', {
-                method: 'POST',
-                body: JSON.stringify({name}),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-
-            const data = await res.json()
-           
-            
         }}>
             <input 
              type="text" 

@@ -2,6 +2,8 @@
 import ProjectForm from "@/components/ProjectForm";
 import { useContext, useEffect } from "react";
 import { ProjectContext } from "@/context/ProjectContext";
+import ProjectCard from "@/components/ProjectCard";
+import ProjectDropdown from "@/components/ProjectDropdown";
 
 function HomePage(){
 
@@ -18,12 +20,17 @@ function HomePage(){
 
       <h1 style={{ color: 'white', fontSize: '2em', fontWeight: 'bold' }}>Project registration</h1>
       <ProjectForm />
+       <ProjectDropdown />
       {projects.map((project) => (
-        <div key={project.id} className="bg-slate-400 p-4 my-2">
-          <h1>{project.name}</h1>
-        </div>
-      ))}</div>
+        <ProjectCard project={project} key={project.id}>
+        </ProjectCard>
+
+      ))}
+      </div>
+     
     </div>
+
+    
   )
 }
 

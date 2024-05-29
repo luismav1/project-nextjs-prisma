@@ -1,6 +1,5 @@
 "use client"
 import ProjectForm from "@/components/ProjectForm";
-import ProjectCard from "@/components/ProjectCard";
 import { useContext, useEffect } from "react";
 import { ProjectContext } from "@/context/ProjectContext";
 

@@ -1,19 +1,19 @@
 "use client"
 import { ProjectContext } from '@/context/ProjectContext'
 import { useRouter } from 'next/navigation'
-import {useContext, useState} from 'react'
+import {useState, useContext} from 'react'
+
 
 function ProjectForm() {
 
     const [name, setName] = useState('')
+    
     const {createProject} = useContext(ProjectContext)
-    const router = useRouter()
     return (
         <form 
             onSubmit={async(e) => {
             e.preventDefault();
             await createProject({name})
-
         }}>
             <input 
              type="text" 
@@ -22,6 +22,7 @@ function ProjectForm() {
              placeholder="Name"
              className="w-full px-4 py-2 text-black bg-white rounded-md focus:outline-none focus:ring focus:ring-blue-600 my-2"
              onChange={(e) => setName(e.target.value)}
+             
             />
             <button 
              type="submit" 
